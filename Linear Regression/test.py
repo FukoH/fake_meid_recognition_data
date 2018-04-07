@@ -48,3 +48,13 @@ def test():
 
 if __name__=='__main__':
     test()
+
+
+def cost_function(theta,X,Y):
+    m = X.shape[0]
+    poly1 = -Y.T.dot(np.log(sigmoid(X.dot(theta))))
+    poly2 = (1-Y).T.dot(np.log(1 - sigmoid(X.dot(theta))))
+    Q = poly1[0]-poly2[0]
+    #J = (1/m)*((-Y.T.dot(np.log(sigmoid(X.dot(theta))))-(1-Y).T.dot(np.log(1 - sigmoid(X.dot(theta))))))
+    #grad = (1/m)*X.T.dot((sigmoid(X.dot(theta))-Y))
+    return Q
